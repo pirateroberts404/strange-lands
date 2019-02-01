@@ -1,0 +1,22 @@
+{
+  "wp_endpoint": "https://dmbk.network/strange-lands/wp-json/api/v1/data/",
+  "insta_endpoint": "https://dmbk.network/strange-lands/wp-json/api/v1/instagram",
+  "meta_defaults": {
+    "title": "Strange Lands",
+    "description": "Let's explore the universe together.",
+    "site_url": "https://strangelands.com",
+    "bgcolor": "#171618"
+  },
+  "fonts": [
+    "Souvenir Light"
+  ],
+  "MAIN_MENU": [
+    {
+      "title": "Stocklist",
+      "slug": "stocklist"
+    },{
+      "title": "Instagram",
+      "slug": "instagram"
+    }
+  ]
+}
