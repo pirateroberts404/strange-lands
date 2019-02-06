@@ -7,36 +7,28 @@ import { H1 } from './../styles/components'
 import { spacing, shared } from './../styles/theme'
 import FitImage from './utils/FitImage'
 import FullWindow from './FullWindow'
-import Logo from './Logo'
 
-const AgeVerification = props => {
-  console.log(props)
-  return (
-    <FullWindow>
-      <VerificationWrapper>
-        <LogoPosition>
-          <Logo/>
-        </LogoPosition>
-        {props.apiData &&
-          <AgeCta>
-            <H1 dangerouslySetInnerHTML={{ __html: props.apiData.options.age_verification_cta }} />
-            <ButtonWrapper>
-              <AgeButton onClick={() => props.set_verification(false)}>
-                <span>yes</span>
-              </AgeButton>
-              <AgeButton>
-                <span>no</span>
-              </AgeButton>
-            </ButtonWrapper>
-          </AgeCta>
-        }
-      </VerificationWrapper>
-      <VerificationBg>
-        <FitImage src={`/assets/placeholder/age-gradient.svg`} contain={`cover`}/>
-      </VerificationBg>
-    </FullWindow>
-  )
-}
+const AgeVerification = props => 
+  <FullWindow>
+    <VerificationWrapper>
+      {props.apiData &&
+        <AgeCta>
+          <H1 dangerouslySetInnerHTML={{ __html: props.apiData.options.age_verification_cta }} />
+          <ButtonWrapper>
+            <AgeButton onClick={() => props.set_verification(false)}>
+              <span>yes</span>
+            </AgeButton>
+            <AgeButton>
+              <span>no</span>
+            </AgeButton>
+          </ButtonWrapper>
+        </AgeCta>
+      }
+    </VerificationWrapper>
+    <VerificationBg>
+      <FitImage src={`/assets/placeholder/age-gradient.svg`} contain={`cover`}/>
+    </VerificationBg>
+  </FullWindow>
 
 export default connect(
   state => ({
@@ -48,20 +40,8 @@ export default connect(
 )(AgeVerification)
 
 // STYLES
-const LogoPosition = styled.div`
-  display: block;
-  position: fixed;
-  z-index: 9000;
-  width: 8rem;
-  top: ${spacing.single_pad};
-  left: ${spacing.single_pad};
-  ${media.desktopNav`
-    width: 14rem;
-  `}
-`
-
 const VerificationWrapper = styled.section`
-  ${animationFadeIn(2500, 250)};
+  ${animationFadeIn(2500, 500)};
   ${flexCenteredAll};
   ${fixedTopLeft};
   z-index: 100;
@@ -70,7 +50,7 @@ const VerificationWrapper = styled.section`
 `
 
 const VerificationBg = styled.aside`
-  ${animationFadeIn(1750, 350)};
+  ${animationFadeIn(1750, 0)};
   ${fixedTopLeft};
   mask: url('/assets/placeholder/age-gradient.svg');
   mask-size: cover;

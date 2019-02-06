@@ -1,13 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled, { createGlobalStyle } from 'styled-components'
-import { flexColumn } from './styles/mixins'
-import { AgeVerification } from './components'
-import { colors } from './styles/theme'
+import { flexColumn, media } from './styles/mixins'
+import { AgeVerification, Logo } from './components'
+import { colors, spacing } from './styles/theme'
 
 const Document = props =>
   <React.Fragment>
     <GlobalStyles />
+    <LogoPosition>
+      <Logo />
+    </LogoPosition>
     {props.age && <AgeVerification/>}
     {(props.apiData && !props.age) &&
       <React.Fragment>
@@ -30,6 +33,18 @@ const Main = styled.main`
   ${flexColumn};
   width: 100vw;
   position: relative;
+`
+
+const LogoPosition = styled.div`
+  display: block;
+  position: fixed;
+  z-index: 9000;
+  width: 8rem;
+  top: ${spacing.single_pad};
+  left: ${spacing.single_pad};
+  ${media.desktopNav`
+    width: 14rem;
+  `}
 `
 
 // NORMALIZE CSS
