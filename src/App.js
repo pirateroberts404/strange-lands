@@ -5,6 +5,7 @@ import { setPageCount, setRoute } from './state/actions'
 import Routes from './Routes'
 
 class App extends Component {
+  
   constructor(props) {
     super(props)
     this.props.history.listen(() => {
@@ -13,9 +14,11 @@ class App extends Component {
       this.props.set_route(this.props.history.location.pathname)
     })
   }
+  
   componentWillMount() {
     this.props.set_route(this.props.history.location.pathname)
   }
+  
   render() {
     return (
       <Router history={this.props.history}>

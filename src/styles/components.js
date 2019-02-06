@@ -5,57 +5,27 @@ import * as _ from './mixins'
 
 // TYPE
 const H1 = styled.h1`
-  ${_.navType};
-  padding-bottom: ${spacing.single_pad};
-  color: ${props => props.color || colors.lt_blue};
-  opacity: 1;
-  ${_.opacityTransition};
-  &.hide {
-    opacity: 0;
-  }
+  ${_.bigType};
 `
 
 const H2 = styled.h2`
   ${_.mediumType};
-  color: ${colors.blue};
-`
-
-const H2Small = styled.h2`
-  ${_.mediumTypeSmall};
-  color: ${colors.white};
 `
 
 const H3 = styled.h3`
-  ${_.bodyType};
-  padding-bottom: ${spacing.small_pad};
-  color: ${colors.blue};
+  ${_.mediumType};
 `
 
 const H4 = styled.h4`
-  ${_.bodyTypeSmall};
+  ${_.mediumType};
 `
 
 const H5 = styled.h5`
   ${_.bodyType};
-  padding-bottom: ${spacing.small_pad};
-  color: ${colors.black};
-`
-
-const H6 = styled.h6`
-  ${_.bodyType};
-  padding-bottom: ${spacing.small_pad};
 `
 
 const P = styled.p`
   ${_.bodyType};
-`
-
-const MediumP = styled.p`
-  ${_.bodyTypeSmall};
-`
-
-const SmallP = styled.p`
-  ${_.smallType};
 `
 
 const Article = styled.article`
@@ -66,74 +36,6 @@ const Article = styled.article`
   ${_.media.desktopNav`
     padding: 0 ${spacing.double_pad};
   `}
-`
-
-const StyledMarkup = styled.div`
-  &.pad-top {
-    padding-top: ${spacing.double_pad};
-  }
-  h1 {
-    ${_.bigType};
-  }
-  h2 {
-    ${_.mediumType};
-  }
-  h3 {
-    ${_.bodyType};
-  }
-  h4 {
-    ${_.bodyType};
-  }
-  h5 {
-    ${_.bodyType};
-  }
-  h6 {
-    ${_.bodyType};
-  }
-  p {
-    ${_.bodyType};
-  }
-  a {
-    ${_.defaultLink};
-  }
-  li {
-    ${_.bodyType};
-  }
-`
-
-const ScrollContent = styled.section`
-  width: 100%;
-  min-height: ${props => props.height}px;
-  position: relative;
-  z-index: 10;
-  ${_.media.desktopNav`
-    padding-left: ${spacing.left_desk};
-  `}
-  h1 {
-    padding-bottom: 6rem;
-  }
-  article {
-    margin: 0 auto;
-    padding: 8rem ${spacing.micro_pad};
-    ${_.media.desktopNav`
-      padding: 6rem ${spacing.double_pad};
-    `}
-    * {
-      color: ${colors.blue};
-    }
-    .inner {
-      padding-bottom: ${spacing.double_pad};
-      p {
-        ${_.flexColumn};
-      }
-    }
-  }
-`
-
-const GridWrapper = styled.ul`
-  ${_.wrapperWidths};
-  ${_.flexRowWrap};
-  ${_.grid};
 `
 
 const ProportionWrapper = styled.div`
@@ -227,14 +129,6 @@ const MenuWrapper = styled.menu`
   }
 `
 
-const MobileHero = styled.div`
-  width: 100vw;
-  height: ${props => props.height || `61.5vw`};
-  position: relative;
-  margin: auto;
-  overflow: hidden;
-`
-
 const Modal = styled.div`
   ${_.flexRowCenteredAll};
   position: fixed;
@@ -261,16 +155,12 @@ const ModalContent = styled.div`
 export {
   H1,
   H2,
-  H2Small,
   H3,
   H4,
   H5,
   H6,
   P,
-  MediumP,
-  SmallP,
   Article,
-  StyledMarkup,
   SocialLink,
   StyledLink,
   ExternalLink,
@@ -279,9 +169,6 @@ export {
   Modal,
   ModalContent,
   CloseButton,
-  GridWrapper,
   ProportionWrapper,
-  MobileHero,
   MenuWrapper,
-  ScrollContent,
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import { connect } from 'react-redux'
-import { P, SmallP } from './../styles/components'
+import { P } from './../styles/components'
 import { buttonInit, media, smallType, sansFont } from './../styles/mixins'
 import { fonts, colors, spacing } from './../styles/theme'
 import ResponsiveWrapper from './ResponsiveWrapper'
@@ -69,7 +69,7 @@ class MailScrape extends React.Component {
           <React.Fragment>
             <ResponsiveWrapper
               desktop={<P dangerouslySetInnerHTML={{ __html: this.props.apiData.options.enews_cta }} />}
-              mobile={<SmallP dangerouslySetInnerHTML={{ __html: this.props.apiData.options.enews_cta }} />}
+              mobile={<P dangerouslySetInnerHTML={{ __html: this.props.apiData.options.enews_cta }} />}
             />
             <MailchimpSubscribe
               url={this.props.apiData.options.mailchimp_url}

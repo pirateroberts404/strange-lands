@@ -23,11 +23,11 @@ const sharedRules = css`
 
 const ImgWrapper = styled.div`
   ${sharedRules};
+  transition: opacity 500ms ease-in-out;
   opacity: ${props => props.alpha};
+  will-change: opacity;
   width: 100%;
   height: 100%;
-  transition: opacity 500ms ease-in-out;
-  will-change: opacity;
   overflow: hidden;
 `
 

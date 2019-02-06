@@ -3,7 +3,6 @@
   function main_data(){
     $data = array();
     $data['options'] = get_fields('options');
-    $data['instagram'] = cpt_instagram();
     return $data;
   }
   

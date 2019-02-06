@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 
 const FullWindow = props =>
-  <FullWindowWrapper height={props.wh} zindex={props.zIndex || 10}>
+  <FullWindowWrapper height={props.wh} zindex={props.zIndex || 10} position={props.position || 'fixed'}>
     {props.children}
   </FullWindowWrapper>
 
@@ -28,7 +28,7 @@ const overflow = (props) => {
 const FullWindowWrapper = styled.aside`
   height: ${props => props.height}px;
   z-index: ${props => props.zindex};
-  position: fixed;
+  position: ${props => props.position};
   top: 0;
   left: 0;
   width: 100vw;

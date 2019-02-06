@@ -1,1 +1,1 @@
-# Besito Los Angeles
+# 🌴 STRANGE LANDS CANNABIZ 🌴

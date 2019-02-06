@@ -40,6 +40,16 @@ const media = {
   `,
 }
 
+// Style
+
+const gradient = css`
+  background: #3023ae;
+  background: -moz-linear-gradient(45deg, ${colors.blue} 0%, ${colors.purple} 51%, ${colors.orange} 100%);
+  background: -webkit-linear-gradient(45deg, ${colors.blue} 0%, ${colors.purple} 51%, ${colors.orange} 100%);
+  background: linear-gradient(45deg, ${colors.blue} 0%, ${colors.purple} 51%, ${colors.orange} 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${colors.blue}', endColorstr='${colors.orange}',GradientType=1 );
+`
+
 // Layout & Positioning UTILS
 const maxWidth = css`
   width: 100%;
@@ -59,8 +69,8 @@ const fixedTopLeft = css`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 `
 
 const mainPadding = css`
@@ -82,21 +92,17 @@ const scrollPanel = css`
 const sansFont = css`
   font-family: ${fonts.sans};
   font-weight: bold;
+  color: ${colors.white};
 `
 
 const bigType = css`
   ${sansFont};
   font-size: ${font_sizes.giant_sm};
-  line-height: .8;
-  letter-spacing: -.75vmin;
+  line-height: 1;
+  text-align: center;
+  font-weight: lighter;
   ${media.desktopNav`
     font-size: ${font_sizes.giant};
-  `}
-  ${media.medium`
-    font-size: ${font_sizes.giant};
-  `}
-  ${media.vert`
-    font-size: 34vh;
   `}
 `
 
@@ -134,31 +140,11 @@ const navType = css`
 
 const bodyType = css`
   ${sansFont};
-  font-size: 2.8rem;
-  line-height: 1.25;
   color: ${colors.white};
   width: 100%;
-  margin-bottom: ${spacing.single_pad};
-  &:last-child{
-    margin-bottom: 0;
-  }
+  font-size: ${font_sizes.body_sm};
   ${media.desktopNav`
-    font-size: 3.5rem;
-  `}
-  ${media.medium`
-    font-size: 4.25rem;
-  `}
-`
-
-const bodyTypeSmall = css`
-  ${sansFont};
-  font-size: 2.25rem;
-  line-height: 1.45;
-  color: ${colors.white};
-  width: 100%;
-  letter-spacing: -1px;
-  ${media.medium`
-    font-size: 3rem;
+    font-size: ${font_sizes.body};
   `}
 `
 
@@ -166,7 +152,6 @@ const smallType = css`
   ${sansFont};
   font-size: ${font_sizes.small_sm};
   line-height: 1.25;
-  color: ${colors.white};
   ${media.medium`
     font-size: ${font_sizes.small};
   `}
@@ -394,51 +379,6 @@ const positionClasses = css`
   }
 `
 
-const wrapperWidths = css`
-  width: 100%;
-  margin: 0 auto;
-  &.full_width {
-    max-width: 100%;
-  }
-  &.max_large {
-    max-width: ${widths.max_large};
-  }
-  &.max_medium {
-    max-width: ${widths.max_medium};
-  }
-  &.max_small {
-    max-width: ${widths.max_small};
-  }
-`
-
-const grid = css`
-  flex-grow: 0;
-  flex-shrink: 0;
-  li {
-    width: 50%;
-    position: relative;
-  }
-  ${media.desktopNav`
-    &.one_col > li {
-      width: 100%;
-    }
-    &.three_col > li {
-      width: calc(100% / 3);
-    }
-    &.four_col > li {
-      width: calc(100% / 4);
-    }
-    &.two_col > li {
-      width: 50%;
-    }
-  `}
-  ${media.big`
-    &.four_col > li {
-      width: calc(100% / 5);
-    }
-  `}
-`
-
 const fancyScroll = css`
   &::-webkit-scrollbar {
     width: 1rem;
@@ -464,66 +404,9 @@ const fancyScroll = css`
   }
 `
 
-const fixedHero = (top, bottom, left) => {
-  return css`
-    &.fixed-hero {
-      margin: 0;
-      max-height: 100vh;
-      height: 100vh;
-      overflow: hidden;
-      ${media.desktopNav`
-        padding-bottom: ${bottom};
-        padding-top: ${top};
-        padding-left: ${left};
-        position: fixed;
-        top: 0;
-        height: 100vh;
-      `}
-    }
-  `
-}
-
-const fixedWindow = css`
-  ${fancyScroll};
-  padding: ${heights.header} 0 ${heights.footer};
-  width: 50vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  article {
-    padding-top: ${spacing.double_pad};
-    padding-bottom: ${heights.footer};
-  }
-`
-
 const menuTransition = css`
   transition: transform 500ms ease;
   will-change: transform;
-`
-
-const buttonWidth = `36px`
-
-const buttonWrapper = css`
-  ${flexCenteredAll};
-  ${buttonInit};
-  ${shadow};
-  width: ${buttonWidth};
-  height: ${buttonWidth};
-  border-radius: calc(${buttonWidth} / 2);
-  background-color: ${colors.blue};
-  padding: 0;
-  position: relative;
-  svg {
-    ${absoluteCentered};
-    width: 50%;
-    height: 50%;
-    object-fit: contain;
-    margin: auto;
-  }
 `
 
 export {
@@ -564,14 +447,10 @@ export {
   opacityTransition,
   wrapperWidths,
   textShadow,
-  fixedHero,
-  halfFixed,
-  fixedWindow,
   fancyScroll,
   linkInit,
-  bodyTypeSmall,
   mediumTypeSmall,
   menuTransition,
   navType,
-  buttonWrapper,
+  gradient,
 }

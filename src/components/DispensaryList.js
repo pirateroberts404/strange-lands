@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Container, Row, Col } from 'react-awesome-styled-grid'
 import { ThemeProvider } from 'styled-components'
-import { H1, MediumP, H4, ScrollContent } from './../styles/components'
+import { H1, H4 } from './../styles/components'
 import { colors } from './../styles/theme'
 
 const DispensaryList = props => {
@@ -45,7 +45,7 @@ const DispensaryList = props => {
     },
   }
   return (
-    <ScrollContent height={props.wh}>
+    <section>
       <article>
         <ThemeProvider theme={{ awesomegrid: customConf }}>
           <Container>
@@ -57,10 +57,6 @@ const DispensaryList = props => {
                 <Col xs={12} sm={12} md={4} lg={4} xl={4} key={`disp-${i}`}>
                   <div className={`inner`}>
                     <H4><a href={`${item.vendor_link}`} target='_blank'>{item.vendor_name}</a></H4>
-                    <MediumP>
-                      <span className={`address`} dangerouslySetInnerHTML={{ __html: item.vendor_address}}/>
-                      <span className={`phone`}>{item.vendor_phone}</span>
-                    </MediumP>
                   </div>
                 </Col>
               )}
@@ -68,7 +64,7 @@ const DispensaryList = props => {
           </Container>
         </ThemeProvider>
       </article>
-    </ScrollContent>
+    </section>
   )
 }
 

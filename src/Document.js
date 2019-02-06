@@ -1,37 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ageVerification } from './state/actions'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn } from './styles/mixins'
-import { AgeVerification, DesktopMenu, ResponsiveWrapper, MobileMenu, Navigation, Footer } from './components'
+import { AgeVerification } from './components'
 import { colors } from './styles/theme'
-import { MAIN_MENU } from './../config.json'
 
 const Document = props =>
   <React.Fragment>
     <GlobalStyles />
-    {props.age && <AgeVerification ClickFunction={() => props.set_verification(false)} />}
+    {props.age && <AgeVerification/>}
     {(props.apiData && !props.age) &&
       <React.Fragment>
-        <ResponsiveWrapper
-          desktop={ 
-            <DesktopMenu>
-              <Navigation menu_items={MAIN_MENU}/>
-            </DesktopMenu> }
-          mobile={ 
-            <MobileMenu>
-              <Navigation menu_items={MAIN_MENU}/>
-            </MobileMenu> }
-        />
         <Main>
           {props.children}
         </Main>
-        {props.route !== '/' && 
-          <ResponsiveWrapper
-            desktop={false}
-            mobile={<Footer/>}
-          />
-        }
       </React.Fragment>
     }
   </React.Fragment>
@@ -40,12 +22,6 @@ export default connect(
   state => ({
     apiData: state.apiData,
     age: state.verificationState,
-    menu: state.menuState,
-    resizeState: state.resizeState,
-    route: state.routeState,
-  }),
-  dispatch => ({
-    set_verification: (bool) => dispatch(ageVerification(bool))
   })
 )(Document)
 
