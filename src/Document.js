@@ -18,7 +18,7 @@ const Document = props =>
       leave={{ opacity: 0, transform: `matrix3d(1.45, 0.02, 0.00, 0.0005, 0.025, 1.45,0.00,0.0001,0,0,1,0,0,0,10,1)`, pointerEvents: 'none' }}
     >
       {props.age && (styles =>
-        <Full style={styles} height={`${props.wh}px`} zindex={1000}>
+        <Full style={styles} height={`${props.wh}px`} zindex={200}>
           <AgeVerification/>
         </Full>
       )}

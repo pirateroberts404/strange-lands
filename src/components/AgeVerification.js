@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { ageVerification } from './../state/actions'
 import { flexColumn, buttonInit, flexRow, animationFadeIn, flexCenteredAll, smallType, fixedTopLeft } from './../styles/mixins'
-import { H1, FullBg } from './../styles/components'
+import { H1 } from './../styles/components'
 import { spacing, shared } from './../styles/theme'
 import FitImage from './utils/FitImage'
 import FullWindow from './FullWindow'
@@ -11,7 +11,7 @@ import FullWindow from './FullWindow'
 const AgeVerification = props => 
   <FullWindow>
     <VerificationWrapper>
-      {props.apiData &&
+      {(props.apiData && props.fonts) &&
         <AgeCta>
           <H1 dangerouslySetInnerHTML={{ __html: props.apiData.options.age_verification_cta }} />
           <ButtonWrapper>
@@ -24,7 +24,7 @@ const AgeVerification = props =>
           </ButtonWrapper>
         </AgeCta>
       }
-      <FullBg mask={'/assets/placeholder/age-gradient.svg'}>
+      <FullBg>
         <FitImage src={`/assets/placeholder/age-gradient.svg`} contain={`cover`} />
       </FullBg>
     </VerificationWrapper>
@@ -33,6 +33,7 @@ const AgeVerification = props =>
 export default connect(
   state => ({
     apiData: state.apiData,
+    fonts: state.fontsLoaded,
   }),
   dispatch => ({
     set_verification: (bool) => dispatch(ageVerification(bool))
@@ -47,6 +48,29 @@ const VerificationWrapper = styled.section`
   z-index: 100;
   overflow: hidden;
   justify-content: center;
+`
+
+const FullBg = styled.aside`
+  ${animationFadeIn(1750, 0)};
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mask: url('/assets/placeholder/age-gradient.svg');
+  mask-size: cover;
+  z-index: 0;
+  &:before {
+    filter: url(#noise);
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
 `
 
 const ButtonWrapper = styled.div`

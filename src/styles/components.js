@@ -152,25 +152,6 @@ const ModalContent = styled.div`
   `}
 `
 
-const FullBg = styled.aside`
-  ${_.animationFadeIn(1750, 0)};
-  ${_.fixedTopLeft};
-  mask: url(${props => props.mask});
-  mask-size: cover;
-  z-index: 0;
-  &:before {
-    filter: url(#noise);
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-  }
-`
-
 export {
   H1,
   H2,
@@ -190,5 +171,4 @@ export {
   CloseButton,
   ProportionWrapper,
   MenuWrapper,
-  FullBg,
 }
