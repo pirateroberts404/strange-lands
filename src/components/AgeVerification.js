@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { ageVerification } from './../state/actions'
-import { flexColumn, buttonInit, flexRow, animationFadeIn, media, flexCenteredAll, smallType, gradient, fixedTopLeft } from './../styles/mixins'
-import { H1 } from './../styles/components'
+import { flexColumn, buttonInit, flexRow, animationFadeIn, flexCenteredAll, smallType, fixedTopLeft } from './../styles/mixins'
+import { H1, FullBg } from './../styles/components'
 import { spacing, shared } from './../styles/theme'
 import FitImage from './utils/FitImage'
 import FullWindow from './FullWindow'
@@ -24,10 +24,10 @@ const AgeVerification = props =>
           </ButtonWrapper>
         </AgeCta>
       }
+      <FullBg mask={'/assets/placeholder/age-gradient.svg'}>
+        <FitImage src={`/assets/placeholder/age-gradient.svg`} contain={`cover`} />
+      </FullBg>
     </VerificationWrapper>
-    <VerificationBg>
-      <FitImage src={`/assets/placeholder/age-gradient.svg`} contain={`cover`}/>
-    </VerificationBg>
   </FullWindow>
 
 export default connect(
@@ -47,24 +47,6 @@ const VerificationWrapper = styled.section`
   z-index: 100;
   overflow: hidden;
   justify-content: center;
-`
-
-const VerificationBg = styled.aside`
-  ${animationFadeIn(1750, 0)};
-  ${fixedTopLeft};
-  mask: url('/assets/placeholder/age-gradient.svg');
-  mask-size: cover;
-  &:before {
-    filter: url(#noise);
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-  }
 `
 
 const ButtonWrapper = styled.div`
@@ -118,6 +100,7 @@ const AgeButton = styled.button`
 
 const AgeCta = styled.div`
   ${flexColumn};
+  z-index: 10;
   position: relative;
   h1 {
     margin-bottom: ${spacing.double_pad};

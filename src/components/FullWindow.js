@@ -25,7 +25,7 @@ const overflow = (props) => {
     `
   }
 }
-const FullWindowWrapper = styled.aside`
+const FullWindowWrapper = styled.div`
   height: ${props => props.height}px;
   z-index: ${props => props.zindex};
   position: ${props => props.position};
