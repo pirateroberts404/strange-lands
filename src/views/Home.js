@@ -2,8 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Head, optionsData, FullWindow } from './../components'
 import { H1 } from './../styles/components'
-import { flexCenteredAll, fullWindow, animationFadeIn, textShadow } from './../styles/mixins'
+import { flexCenteredAll, fullWindow, animationFadeIn, textShadow, flexColumn } from './../styles/mixins'
 import HeroBg from './home/HeroBg'
+import Intro from './home/Intro'
+import Strain from './home/Strain'
 
 export default optionsData(props =>
   <React.Fragment>
@@ -12,8 +14,17 @@ export default optionsData(props =>
       <Centered>
         <Headline dangerouslySetInnerHTML={{ __html: props.hero_cta }} />
       </Centered>
-      <HeroBg/>
+      <HeroBg image={`/assets/placeholder/home-bg.svg`} />
     </FullWindow>
+    <ContentWrap>
+      <Intro introCopy={props.intro_text}/>
+      <Strains>
+        {props.strains_list.map((item, i) =>  
+          <Strain key={`strain-${i}`} data={item}/>
+        )}
+      </Strains>
+      <HeroBg image={`/assets/placeholder/background-strains.svg`} />
+    </ContentWrap>
   </React.Fragment>
 )
 
@@ -25,6 +36,18 @@ const Centered = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+`
+
+const ContentWrap = styled.div`
+  width: 100%;
+  position: relative;
+`
+
+const Strains = styled.section`
+  ${flexColumn};
+  width: 100%;
+  position: relative;
+  z-index: 100;
 `
 
 const Headline = styled(H1)`

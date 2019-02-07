@@ -55,6 +55,8 @@ const baseFontSize = 16
 const font_sizes = {
   giant: `7rem`,
   giant_sm: `7rem`,
+  big: `6rem`,
+  big_sm: `6rem`,
   medium: `4rem`,
   medium_sm: `4rem`,
   body: `3rem`,

@@ -5,7 +5,7 @@ import * as _ from './mixins'
 
 // TYPE
 const H1 = styled.h1`
-  ${_.bigType};
+  ${_.giantType};
 `
 
 const H2 = styled.h2`
@@ -13,7 +13,8 @@ const H2 = styled.h2`
 `
 
 const H3 = styled.h3`
-  ${_.mediumType};
+  ${_.bigType};
+  padding-bottom: ${spacing.double_pad};
 `
 
 const H4 = styled.h4`
