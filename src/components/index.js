@@ -10,6 +10,7 @@ import optionsData from './optionsData'
 import DispensaryList from './DispensaryList'
 import FullWindow from './FullWindow'
 import Footer from './Footer'
+import LocationMap from './LocationMap/index'
 
 export {
   FitImage,
@@ -24,4 +25,5 @@ export {
   DispensaryList,
   FullWindow,
   Footer,
+  LocationMap,
 }
