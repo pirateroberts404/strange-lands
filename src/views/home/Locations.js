@@ -5,11 +5,11 @@ import { flexCenteredAll, flexColumn } from './../../styles/mixins'
 import { shared, spacing } from './../../styles/theme'
 import { LocationMap } from './../../components'
 
-export default () =>
+export default props =>
 	<LocationsSection>
 		<LocationWrapper>
 			<H3>Locations</H3>
-			<LocationMap/>
+			<LocationMap data={props.data}/>
 		</LocationWrapper>
 	</LocationsSection>
 

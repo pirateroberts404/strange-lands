@@ -3,6 +3,7 @@
   function main_data(){
     $data = array();
     $data['options'] = get_fields('options');
+    $data['strains'] = cpt_strains();
     return $data;
   }
   

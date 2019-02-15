@@ -1,17 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { H3, P } from './../../styles/components'
-import { flexRowCenteredVert, flexColumnCentered } from './../../styles/mixins'
-import { shared, spacing } from './../../styles/theme'
-import { FitImage } from './../../components'
+import { H3 } from '../../styles/components'
+import { flexColumn, flexColumnCentered, bodyType } from '../../styles/mixins'
+import { spacing } from '../../styles/theme'
+import { FitImage } from '../../components'
 
-export default props =>
+const Strain = props =>
 	<StrainWrapper>
 		<div className={`strain-inner`}>
 			<div className={`strain-copy`}>
 				<div className={`copy-block`}>
 					<H3>{props.data.strain_name}</H3>
-					<P>{props.data.strain_copy}</P>
+					<div className={`description`} dangerouslySetInnerHTML={{ __html: props.data.strain_copy }}/>
 				</div>
 			</div>
 			<div className={`strain-image`}>
@@ -21,6 +22,27 @@ export default props =>
 			</div>
 		</div>
 	</StrainWrapper>
+
+const Strains = props =>
+	<StrainsList>
+		{props.apiData && props.apiData.strains.map((item, i) =>
+			<Strain key={`strain-${i}`} data={item} />
+		)}
+	</StrainsList>
+
+export default connect(
+	state => ({
+		apiData: state.apiData
+	})
+)(Strains)
+
+
+const StrainsList = styled.section`
+  ${flexColumn};
+  width: 100%;
+  position: relative;
+  z-index: 100;
+`
 
 const StrainWrapper = styled.article`
 	width: 100%;
@@ -39,9 +61,12 @@ const StrainWrapper = styled.article`
 		padding: ${spacing.double_pad} 0;
 		position: relative;
 		margin: 0 auto;
-		p {
-			width: 100%;
-			max-width: 44rem;
+	}
+	.description {
+		width: 100%;
+		max-width: 44rem;
+		* {
+			${bodyType};
 		}
 	}
 	.strain-image,
