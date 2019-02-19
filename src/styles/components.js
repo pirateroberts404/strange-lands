@@ -25,8 +25,27 @@ const H5 = styled.h5`
   ${_.bodyType};
 `
 
+const H6 = styled.h5`
+  ${_.smallType};
+  font-weight: bolder;
+  padding-bottom: ${spacing.micro_pad};
+`
+
 const P = styled.p`
   ${_.bodyType};
+`
+
+const SmallP = styled.p`
+  ${_.microType};
+`
+
+const SmallA = styled.a`
+  ${_.microType};
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: ${colors.magenta};
+  }
 `
 
 const Article = styled.article`
@@ -161,6 +180,8 @@ export {
   H5,
   H6,
   P,
+  SmallP,
+  SmallA,
   Article,
   SocialLink,
   StyledLink,

@@ -151,7 +151,8 @@ const bodyType = css`
 const smallType = css`
   ${sansFont};
   font-size: ${font_sizes.small_sm};
-  line-height: 1.25;
+  line-height: 1.45;
+  width: 100%;
   ${media.medium`
     font-size: ${font_sizes.small};
   `}

@@ -4,6 +4,7 @@
     $data = array();
     $data['options'] = get_fields('options');
     $data['strains'] = cpt_strains();
+    $data['stockists'] = cpt_stockists();
     return $data;
   }
   

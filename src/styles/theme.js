@@ -2,7 +2,7 @@ import { toRem } from './../scripts'
 import { meta_defaults } from './../../config.json'
 
 const units = {
-  base_pad: 15,
+  base_pad: 10,
   header: 80,
   footer: 80,
   max: 1020,
@@ -42,8 +42,10 @@ const colors = {
   black: '#171618',
   grey_blue: '#245AA6',
   blue: '#3023AE',
+  map_blue: '#2656A6',
   purple: '#E52ADF',
   orange: '#F59223',
+  magenta: '#EE2BFF',
 }
 
 const fonts = {
@@ -61,8 +63,8 @@ const font_sizes = {
   medium_sm: `4rem`,
   body: `3rem`,
   body_sm: `3rem`,
-  small: `2.5rem`,
-  small_sm: `2.5rem`,
+  small: `1.75rem`,
+  small_sm: `1.75rem`,
   micro: `1.5rem`,
   micro_sm: `1.5rem`,
 }

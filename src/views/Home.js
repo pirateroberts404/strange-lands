@@ -6,7 +6,7 @@ import { flexCenteredAll, fullWindow, animationFadeIn, textShadow } from './../s
 import HeroBg from './home/HeroBg'
 import Intro from './home/Intro'
 import Strains from './home/Strains'
-import Locations from './home/Locations'
+import Stockists from './home/Stockists'
 
 export default optionsData(props =>
   <React.Fragment>
@@ -18,9 +18,9 @@ export default optionsData(props =>
       <HeroBg image={`/assets/placeholder/home-bg.svg`} />
     </FullWindow>
     <ContentWrap>
-      <Locations data={props} />
       <Intro introCopy={props.intro_text} />
       <Strains />
+      <Stockists />
       <HeroBg image={`/assets/placeholder/background-strains.svg`} />
     </ContentWrap>
   </React.Fragment>
