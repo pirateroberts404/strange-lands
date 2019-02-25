@@ -6,6 +6,10 @@ head
   include _icons.pug
   include _social-cards.pug
   include _head-css.pug
-  title #{htmlWebpackPlugin.options.title}
-  meta(name="description" content= htmlWebpackPlugin.options.description)
-  meta(name="keywords" content= htmlWebpackPlugin.options.keywords)
+  title(data-react-helmet="true") #{htmlWebpackPlugin.options.title}
+  meta(name="description", data-react-helmet="true", content=htmlWebpackPlugin.options.description)
+  meta(name="keywords", content=htmlWebpackPlugin.options.keywords)
+  meta(name="fragment" content="!")
+  script(type="text/javascript").
+    /* Prerender.io */
+    window.prerenderReady = false;

@@ -58,13 +58,6 @@ if(function_exists('acf_add_options_page')) {
 		'redirect'		=> false,
     'position'    => 30
   ));
-  
-  acf_add_options_sub_page(array(
-		'page_title' 	=> 'Stockists',
-		'menu_title'	=> 'Stockists',
-    'menu_slug' 	=> 'stockists',
-		'parent_slug'	=> 'site-content',
-	));
 
   acf_add_options_sub_page(array(
 		'page_title' 	=> 'Contact Info',
