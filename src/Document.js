@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Transition } from 'react-spring'
 import styled, { createGlobalStyle } from 'styled-components'
 import { flexColumn, fancyScroll } from './styles/mixins'
-import { AgeVerification, Logo } from './components'
+import { AgeVerification, Logo, Footer } from './components'
 import { colors } from './styles/theme'
 
 const Document = props =>
@@ -19,6 +19,7 @@ const Document = props =>
       {props.apiData && (styles =>
         <Main style={styles} height={`${props.wh}px`} overflow={'scroll'}>
           {props.children}
+          <Footer/>
         </Main>
       )}
     </Transition>

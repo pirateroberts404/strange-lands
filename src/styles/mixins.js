@@ -162,6 +162,7 @@ const microType = css`
   ${sansFont};
   font-size: ${font_sizes.micro_sm};
   line-height: 1.25;
+  letter-spacing: 1px;
   ${media.medium`
     font-size: ${font_sizes.micro};
   `}
@@ -209,6 +210,7 @@ const buttonInit = css`
   appearance: none;
   cursor: pointer;
   display: block;
+  ${microType};
 `
 
 const transitionAll = (time) => {

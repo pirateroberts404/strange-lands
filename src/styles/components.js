@@ -22,10 +22,11 @@ const H4 = styled.h4`
 `
 
 const H5 = styled.h5`
-  ${_.bodyType};
+  ${_.bigType};
+  text-align: center;
 `
 
-const H6 = styled.h5`
+const H6 = styled.h6`
   ${_.smallType};
   font-weight: bolder;
   padding-bottom: ${spacing.micro_pad};
