@@ -168,6 +168,12 @@ const microType = css`
   `}
 `
 
+const mouseType = css`
+  ${sansFont};
+  font-size: 1.25rem;
+  line-height: 1.25;
+`
+
 const linkInit = css`
   text-decoration: none;  
   &:hover {
@@ -379,6 +385,14 @@ const menuTransition = css`
   will-change: transform;
 `
 
+const hoverPurple = css`
+  transition: color 250ms ease;
+  will-change: color;
+  &:hover {
+    color: ${colors.purple};
+  }
+`
+
 export {
   sansFont,
   media,
@@ -423,4 +437,6 @@ export {
   menuTransition,
   navType,
   gradient,
+  mouseType,
+  hoverPurple,
 }

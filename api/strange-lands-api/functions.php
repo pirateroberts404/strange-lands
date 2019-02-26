@@ -67,6 +67,20 @@ if(function_exists('acf_add_options_page')) {
 	));
 
   acf_add_options_sub_page(array(
+		'page_title' 	=> 'Map',
+		'menu_title'	=> 'Map',
+    'menu_slug' 	=> 'map-content',
+		'parent_slug'	=> 'site-content',
+	));
+
+  acf_add_options_sub_page(array(
+		'page_title' 	=> 'Footer',
+		'menu_title'	=> 'Footer',
+    'menu_slug' 	=> 'footer-content',
+		'parent_slug'	=> 'site-content',
+	));
+
+  acf_add_options_sub_page(array(
 		'page_title' 	=> 'Legal',
 		'menu_title'	=> 'Legal',
     'menu_slug' 	=> 'legal',

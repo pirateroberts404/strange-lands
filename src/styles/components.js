@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { spacing, colors, heights, shared } from './theme'
+import { spacing, colors, heights, shared, font_sizes } from './theme'
 import * as _ from './mixins'
 
 // TYPE
@@ -173,6 +173,44 @@ const ModalContent = styled.div`
   `}
 `
 
+const StyledMarkup = styled.div`
+  width: 100%;
+  max-width: 86rem;
+  &.pad-top {
+    padding-top: ${spacing.double_pad};
+  }
+  h1 {
+    ${_.mediumType};
+  }
+  h2 {
+    ${_.mediumType};
+  }
+  h3 {
+    ${_.bodyType};
+  }
+  h4 {
+    ${_.bodyType};
+  }
+  h5 {
+    ${_.bodyType};
+  }
+  h6 {
+    ${_.bodyType};
+  }
+  p {
+    ${_.bodyType};
+  }
+  a {
+    ${_.defaultLink};
+  }
+  li {
+    ${_.bodyType};
+  }
+  .small {
+    font-size: ${font_sizes.small};
+  }
+`
+
 export {
   H1,
   H2,
@@ -194,4 +232,5 @@ export {
   CloseButton,
   ProportionWrapper,
   MenuWrapper,
+  StyledMarkup,
 }

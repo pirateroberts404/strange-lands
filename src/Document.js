@@ -17,10 +17,12 @@ const Document = props =>
       leave={{ opacity: 0 }}
     >
       {props.apiData && (styles =>
-        <Main style={styles} height={`${props.wh}px`} overflow={'scroll'}>
-          {props.children}
-          <Footer/>
-        </Main>
+        <React.Fragment>
+          <Main style={styles}>
+            {props.children}  
+          </Main>
+          <Footer />
+        </React.Fragment>
       )}
     </Transition>
   </React.Fragment>
@@ -38,14 +40,8 @@ const Main = styled.main`
   ${flexColumn};
   ${fancyScroll};
   width: 100%;
-  height: ${props => props.height};
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: ${props => props.zindex || 100};
+  position: relative;
   overflow-x: hidden;
-  overflow-y: ${props => props.overflow || 'hidden'};
-  -webkit-overflow-scrolling: touch;
 `
 
 // NORMALIZE CSS

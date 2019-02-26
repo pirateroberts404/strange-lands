@@ -10,19 +10,17 @@ import Stockists from './home/Stockists'
 
 export default optionsData(props =>
   <React.Fragment>
-    <Head title={`Home`} />
+    <Head title={`Home`} description={props.intro_text}/>
     <FullWindow position={`relative`}>
       <Centered>
         <Headline dangerouslySetInnerHTML={{ __html: props.hero_cta }} />
       </Centered>
       <HeroBg image={`/assets/placeholder/home-bg.svg`} />
     </FullWindow>
-    <ContentWrap>
-      <Intro introCopy={props.intro_text} />
-      <Strains />
-      <Stockists />
-      <HeroBg image={`/assets/placeholder/background-strains.svg`} />
-    </ContentWrap>
+    <Intro introCopy={props.intro_text} />
+    <Strains />
+    <Stockists />
+    <HeroBg image={`/assets/placeholder/background-strains.svg`} />
   </React.Fragment>
 )
 
@@ -34,11 +32,6 @@ const Centered = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-`
-
-const ContentWrap = styled.div`
-  width: 100%;
-  position: relative;
 `
 
 const Headline = styled(H1)`

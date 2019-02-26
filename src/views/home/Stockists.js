@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { H4, P } from '../../styles/components'
-import { flexColumn, animationFadeIn } from '../../styles/mixins'
-import { shared, spacing } from '../../styles/theme'
+import { flexColumn, animationFadeIn, sansFont, hoverPurple } from '../../styles/mixins'
+import { shared, spacing, colors } from '../../styles/theme'
 import { LocationMap } from '../../components'
 
 const Stockists = props =>
@@ -15,6 +15,11 @@ const Stockists = props =>
 				<Stroke />
 			</HeadlineWrapper>
 			{props.apiData && <LocationMap stockists={props.apiData.stockists} />}
+			{props.apiData &&
+				<LocationBottom>
+					<P dangerouslySetInnerHTML={{ __html: props.apiData.options.stockist_cta }}/>
+				</LocationBottom>
+			}
 		</LocationWrapper>
 	</StockistsSection>
 
@@ -28,7 +33,7 @@ const StockistsSection = styled.section`
 	${flexColumn};
 	align-items: center;
 	width: 100%;
-	padding: 10%;
+	padding: ${spacing.big_pad} 0;
 	position: relative;
 	margin: auto;
 	z-index: 1000;
@@ -37,6 +42,24 @@ const StockistsSection = styled.section`
 const LocationWrapper = styled.div`
 	${flexColumn};
 	align-items: center;
+`
+
+const LocationBottom = styled.div`
+	text-align: center;
+	width: 100%;
+	padding-top: ${spacing.big_pad};
+	p {
+		${sansFont};
+		font-size: 2.25rem;
+		max-width: 50rem;
+		margin: auto;
+		a {
+			color: ${colors.white};
+			font-weight: bold;
+			text-decoration: none;
+			${hoverPurple};
+		}
+	}
 `
 
 const HeadlineWrapper = styled.div`
