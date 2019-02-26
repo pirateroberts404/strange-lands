@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Waypoint from 'react-waypoint'
+import { Link } from 'react-router-dom'
 import { H3 } from '../../styles/components'
 import { flexColumnCentered, bodyType, opacityTransition } from '../../styles/mixins'
 import { spacing } from '../../styles/theme'
@@ -25,12 +25,12 @@ class Strain extends React.Component {
 		return (
 			<StrainWrapper hover_icon={this.props.data.hover_icon}>
 				<div className={`strain-inner`}>
-					<div className={`strain-copy`}>
+					<Link to={`/strain/${this.props.data.slug}`} className={`strain-copy`}>
 						<div className={`copy-block`}>
 							<H3><span>{this.props.data.strain_name}</span></H3>
 							<div className={`description`} dangerouslySetInnerHTML={{ __html: this.props.data.strain_copy }} />
 						</div>
-					</div>
+					</Link>
 					<div className={`strain-image`}>
 						<div className={`image`}>
 							<FitImage src={this.props.data.strain_image} fit={`contain`} />
@@ -43,14 +43,6 @@ class Strain extends React.Component {
 }
 
 export default Strain
-
-const Wrapper = styled.div`
-	width: 100%;
-	height: 65rem;
-	position: relative;
-	display: block;
-	margin: auto;
-`
 
 const StrainWrapper = styled.article`
 	width: 100%;
@@ -87,6 +79,7 @@ const StrainWrapper = styled.article`
 	.strain-copy {
 		${flexColumnCentered};
 		position: relative;
+		text-decoration: none;
 		&:hover {
 			h3 > span:after {
 				opacity: 1;

@@ -5,6 +5,7 @@ import Document from './Document'
 import NotFound from './views/NotFound'
 import Home from './views/Home'
 import Privacy from './views/Privacy'
+import Product from './views/Product'
 
 const Routes = props =>
   <Document>
@@ -12,6 +13,7 @@ const Routes = props =>
    <Switch>
       <Route exact path={'/'} component={props => <Home {...props} />} />
       <Route exact path={'/privacy'} component={props => <Privacy {...props} />} />
+      <Route exact path={'/strain/:slug'} component={props => <Product {...props} />} />
       <Route component={NotFound} />
     </Switch>
     }
