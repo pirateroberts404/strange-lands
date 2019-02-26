@@ -26,7 +26,6 @@ class AgeVerification extends React.Component {
       visible: show_ageGate
     };
     this._ageGateResponse = this._ageGateResponse.bind(this)
-
   }
 
   _ageGateResponse(answer) {

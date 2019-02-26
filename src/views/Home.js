@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Head, optionsData, FullWindow } from './../components'
-import { H1 } from './../styles/components'
-import { flexCenteredAll, fullWindow, animationFadeIn, textShadow } from './../styles/mixins'
+import { Head, optionsData } from './../components'
+import { H1, HeroWrapper } from './../styles/components'
+import { flexCenteredAll, animationFadeIn, textShadow } from './../styles/mixins'
 import HeroBg from './home/HeroBg'
 import Intro from './home/Intro'
 import Strains from './home/Strains'
@@ -11,12 +11,12 @@ import Stockists from './home/Stockists'
 export default optionsData(props =>
   <React.Fragment>
     <Head title={`Home`} description={props.intro_text}/>
-    <FullWindow position={`relative`}>
+    <HeroWrapper position={`relative`}>
       <Centered>
         <Headline dangerouslySetInnerHTML={{ __html: props.hero_cta }} />
       </Centered>
       <HeroBg image={`/assets/placeholder/home-bg.svg`} />
-    </FullWindow>
+    </HeroWrapper>
     <Intro introCopy={props.intro_text} />
     <Strains />
     <Stockists />
@@ -26,8 +26,9 @@ export default optionsData(props =>
 
 const Centered = styled.div`
   ${animationFadeIn(2000, 1000)};
-  ${fullWindow};
   ${flexCenteredAll};
+  width: 100%;
+  height: 100%;
   z-index: 100;
   position: absolute;
   top: 0;

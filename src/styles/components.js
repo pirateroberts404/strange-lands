@@ -163,6 +163,15 @@ const Modal = styled.div`
   `}
 `
 
+const HeroWrapper = styled.section`
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  max-height: 70vw;
+  z-index: 10;
+`
+
 const ModalContent = styled.div`
   ${_.flexCenteredAll};
   flex-direction: column;
@@ -233,4 +242,5 @@ export {
   ProportionWrapper,
   MenuWrapper,
   StyledMarkup,
+  HeroWrapper,
 }
