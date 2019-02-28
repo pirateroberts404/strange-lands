@@ -2,4 +2,6 @@
 
 # 🌴 STRANGE LANDS CANNABIZ 🌴
 
-Website for StrangeLands Cannabis
+Website for StrangeLands Cannabis.
+
+Animation Mockups: [https://dblodorn.github.io/strange-lands/](https://dblodorn.github.io/strange-lands/)
