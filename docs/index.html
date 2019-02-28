@@ -7,6 +7,24 @@
 	<title>Canvas Tests</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
 	<link rel="stylesheet" href="main.css" />
+</head>
+<body>
+	<div id="wrap">
+		<div id="svg-wrapper">
+			<!-- SVG CODE -->
+			<svg xmlns="http://www.w3.org/2000/svg" width="620" height="963" viewBox="0 0 620 963">
+				<g fill="none">
+					<path
+						d="M620 0.2L620 642.6C530.3 639.5 465.9 683.3 426.8 756.1 367.1 867.6 395.3 974.8 223.6 961.9 51.8 949.1-25.7 786.8 7.5 636.2 40.7 485.5 200.2 434.5 295.4 385.7 390.6 336.9 449 252.5 468.1 198.1 496 118.4 526.6 39.2 620 0.2Z"
+						fill="#D8D8D8" />
+				</g>
+			</svg>
+			<!-- SVG CODE -->
+		</div>
+		<div id="canvas-wrapper">
+			<canvas id="canvas"></canvas>
+		</div>
+	</div>
 	<script type="application/javascript">
 		class CanvasObject {
 			constructor(x, y) {
@@ -140,23 +158,5 @@
 		const drawCanvas = new CanvasWrapper();
 		drawCanvas.init();
 	</script>
-</head>
-<body>
-	<div id="wrap">
-		<div id="svg-wrapper">
-			<!-- SVG CODE -->
-			<svg xmlns="http://www.w3.org/2000/svg" width="620" height="963" viewBox="0 0 620 963">
-				<g fill="none">
-					<path
-						d="M620 0.2L620 642.6C530.3 639.5 465.9 683.3 426.8 756.1 367.1 867.6 395.3 974.8 223.6 961.9 51.8 949.1-25.7 786.8 7.5 636.2 40.7 485.5 200.2 434.5 295.4 385.7 390.6 336.9 449 252.5 468.1 198.1 496 118.4 526.6 39.2 620 0.2Z"
-						fill="#D8D8D8" />
-				</g>
-			</svg>
-			<!-- SVG CODE -->
-		</div>
-		<div id="canvas-wrapper">
-			<canvas id="canvas"></canvas>
-		</div>
-	</div>
 </body>
 </html>
