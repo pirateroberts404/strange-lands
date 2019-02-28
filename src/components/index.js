@@ -7,9 +7,10 @@ import Head from './utils/Head'
 import AgeVerification from './AgeVerification'
 import ResponsiveWrapper from './ResponsiveWrapper'
 import optionsData from './optionsData'
-import DispensaryList from './DispensaryList'
+import pageData from './pageData'
 import FullWindow from './FullWindow'
 import Footer from './Footer'
+import LocationMap from './LocationMap/index'
 
 export {
   FitImage,
@@ -19,9 +20,10 @@ export {
   Close,
   Head,
   optionsData,
+  pageData,
   AgeVerification,
   ResponsiveWrapper,
-  DispensaryList,
   FullWindow,
   Footer,
+  LocationMap,
 }

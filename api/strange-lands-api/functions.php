@@ -58,25 +58,32 @@ if(function_exists('acf_add_options_page')) {
 		'redirect'		=> false,
     'position'    => 30
   ));
-  
-  acf_add_options_sub_page(array(
-		'page_title' 	=> 'Strains',
-		'menu_title'	=> 'Strains',
-    'menu_slug' 	=> 'strains',
-		'parent_slug'	=> 'site-content',
-	));
-  
-  acf_add_options_sub_page(array(
-		'page_title' 	=> 'Stockists',
-		'menu_title'	=> 'Stockists',
-    'menu_slug' 	=> 'stockists',
-		'parent_slug'	=> 'site-content',
-	));
 
   acf_add_options_sub_page(array(
 		'page_title' 	=> 'Contact Info',
 		'menu_title'	=> 'Contact Info',
     'menu_slug' 	=> 'contact-info',
+		'parent_slug'	=> 'site-content',
+	));
+
+  acf_add_options_sub_page(array(
+		'page_title' 	=> 'Map',
+		'menu_title'	=> 'Map',
+    'menu_slug' 	=> 'map-content',
+		'parent_slug'	=> 'site-content',
+	));
+
+  acf_add_options_sub_page(array(
+		'page_title' 	=> 'Footer',
+		'menu_title'	=> 'Footer',
+    'menu_slug' 	=> 'footer-content',
+		'parent_slug'	=> 'site-content',
+	));
+
+  acf_add_options_sub_page(array(
+		'page_title' 	=> 'Legal',
+		'menu_title'	=> 'Legal',
+    'menu_slug' 	=> 'legal',
 		'parent_slug'	=> 'site-content',
 	));
 }

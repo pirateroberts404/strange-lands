@@ -1,35 +1,47 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Transition } from 'react-spring'
 import styled, { createGlobalStyle } from 'styled-components'
-import { flexColumn } from './styles/mixins'
-import { AgeVerification } from './components'
+import { flexColumn, fancyScroll } from './styles/mixins'
+import { AgeVerification, Logo, Footer } from './components'
 import { colors } from './styles/theme'
 
 const Document = props =>
   <React.Fragment>
     <GlobalStyles />
-    {props.age && <AgeVerification/>}
-    {(props.apiData && !props.age) &&
-      <React.Fragment>
-        <Main>
-          {props.children}
-        </Main>
-      </React.Fragment>
-    }
+    <Logo />
+    <AgeVerification />
+    <Transition
+      from={{ opacity: 0 }}
+      enter={{ opacity: 1 }}
+      leave={{ opacity: 0 }}
+    >
+      {props.apiData && (styles =>
+        <React.Fragment>
+          <Main style={styles}>
+            {props.children}  
+          </Main>
+          <Footer />
+        </React.Fragment>
+      )}
+    </Transition>
   </React.Fragment>
 
 export default connect(
   state => ({
     apiData: state.apiData,
     age: state.verificationState,
+    wh: state.resizeState.window_height,
   })
 )(Document)
 
 // MAIN STYLING
 const Main = styled.main`
   ${flexColumn};
-  width: 100vw;
+  ${fancyScroll};
+  width: 100%;
   position: relative;
+  overflow-x: hidden;
 `
 
 // NORMALIZE CSS

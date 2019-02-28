@@ -25,6 +25,7 @@ export default () => {
     }
     const _dataHandler = (payload) => {
       dispatch(apiData(payload))
+      window.prerenderReady = true;
       fetchInstaController()
         .then(response => response.json())
         .then((payload) => _instaHandler(payload))

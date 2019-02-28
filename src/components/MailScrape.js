@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import { connect } from 'react-redux'
-import { P } from './../styles/components'
+import { H5 } from './../styles/components'
 import { buttonInit, media, smallType, sansFont } from './../styles/mixins'
 import { fonts, colors, spacing } from './../styles/theme'
 import ResponsiveWrapper from './ResponsiveWrapper'
@@ -49,8 +49,8 @@ class MailScrape extends React.Component {
       return (
         <div className={className} style={style}>
           <div className="input-wrapper">
-            <input ref={node => (this.input = node)} type="email" placeholder="email" />
-            <button onClick={() => this.submit(this.onSubmitted)}></button>
+            <input ref={node => (this.input = node)} type="email" placeholder="Enter your Email" />
+            <button onClick={() => this.submit(this.onSubmitted)}><span>SIGN UP</span></button>
           </div>
           {status === "sending" && <div className="message">sending...</div>}
           {status === "error" && (
@@ -67,10 +67,12 @@ class MailScrape extends React.Component {
       <MailingContainer>
         {(this.props.apiData) &&
           <React.Fragment>
-            <ResponsiveWrapper
-              desktop={<P dangerouslySetInnerHTML={{ __html: this.props.apiData.options.enews_cta }} />}
-              mobile={<P dangerouslySetInnerHTML={{ __html: this.props.apiData.options.enews_cta }} />}
-            />
+            <Cta>
+              <ResponsiveWrapper
+                desktop={<H5 dangerouslySetInnerHTML={{ __html: this.props.apiData.options.newsletter_cta }} />}
+                mobile={<H5 dangerouslySetInnerHTML={{ __html: this.props.apiData.options.newsletter_cta }} />}
+              />
+            </Cta>
             <MailchimpSubscribe
               url={this.props.apiData.options.mailchimp_url}
               render={({ subscribe, status, message }) => (
@@ -96,14 +98,20 @@ export default connect(
 )(MailScrape)
 
 // STYLES
+const Cta = styled.div`
+  width: 100%;
+  max-width: 40rem;
+  position: relative;
+  margin: 0 auto calc(${spacing.big_pad} * 2.5);
+`
+
 const MailingContainer = styled.div`
   width: 100%;
   margin-bottom: ${spacing.double_pad};
   position: relative;
   ${media.desktopNav`
-    padding: ${spacing.double_pad};
-    min-width: 60rem!important;
-    margin-bottom: 4rem;
+    padding: ${spacing.double_pad} 0;
+    margin-bottom: 0;
   `}
   p {
     padding-bottom: ${spacing.single_pad};
@@ -124,7 +132,7 @@ const MailingContainer = styled.div`
     ${media.desktopNav`
       padding-top: 0;
       position: absolute;
-      top: 7.25rem;
+      top: 7rem;
     `}
   }
   .form-wrapper {
@@ -141,12 +149,13 @@ const MailingContainer = styled.div`
     width: 100%;
     border: 0;
     border-radius: 0;
-    background-color: ${colors.lt_blue};
+    border-bottom: 1px solid ${colors.map_blue};
     font-size: 3rem;
-    min-height: 5rem;
+    min-height: 4.5rem;
     padding: .5rem 1.5rem;
     font-weight: bold;
     margin: 0;
+    margin-right: 1rem;
     color: ${colors.white};
     &:focus {
       outline: none!important;
@@ -158,36 +167,30 @@ const MailingContainer = styled.div`
       font-family: ${fonts.sans};
     }
     ${media.medium`
-      height: 5rem;
-      font-size: 4rem;
+      height: 4.5rem;
+      font-size: 2rem;
       padding-top: .6rem;
-      padding-left: 1.2rem;
+      padding-left: 0;
     `}
   }
   button {
     ${buttonInit};
+    -webkit-text-fill-color: ${colors.white}!important;
     margin: 0;
     padding: 0;
     color: white;
-    width: auto;
-    height: 5rem;
-    width: 5rem;
+    height: 4.5rem;
+    width: 100%;
     font-size: 2rem;
-    background-color: ${colors.lt_blue};
-    background-image: url('assets/kiss-emoji.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 60%;
-    border-left: 1px solid ${colors.blue};
+    background-color: ${colors.grey_blue};
     color: ${colors.white}!important;
-    -webkit-text-fill-color: ${colors.white}!important;
     flex-shrink: 0;
     &:hover {
-      background-color: ${colors.lt_blue};
+      background-color: ${colors.map_blue};
     }
     ${media.medium`
-      height: 5rem;
-      width: 5rem;
+      height: 4.5rem;
+      width: 25rem;
       &:hover {
         background-color: ${colors.pink};
         color: ${colors.lt_blue};

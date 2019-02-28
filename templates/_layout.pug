@@ -3,7 +3,11 @@ doctype html
 html(lang= htmlWebpackPlugin.options.language)
   include includes/_head.pug
   body(bgcolor= htmlWebpackPlugin.options.bgcolor)
+    #logo
+    | <!--googleoff: all-->
     #modal
+    |
+    | <!--googleon: all-->
     #root
     include includes/_filters.pug
     block scripts

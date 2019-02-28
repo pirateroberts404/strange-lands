@@ -1,46 +1,92 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Transition } from 'react-spring'
+import Cookies from 'universal-cookie'
 import styled from 'styled-components'
 import { ageVerification } from './../state/actions'
-import { flexColumn, buttonInit, flexRow, animationFadeIn, media, flexCenteredAll, smallType, gradient, fixedTopLeft } from './../styles/mixins'
-import { H1 } from './../styles/components'
-import { spacing, shared } from './../styles/theme'
+import { flexColumn, buttonInit, flexRow, animationFadeIn, flexCenteredAll, smallType, fixedTopLeft } from './../styles/mixins'
+import { H1, Modal } from './../styles/components'
+import { spacing, shared, colors } from './../styles/theme'
 import FitImage from './utils/FitImage'
 import FullWindow from './FullWindow'
-import Logo from './Logo'
+import Portal from './Portal'
 
-const AgeVerification = props => {
-  console.log(props)
-  return (
-    <FullWindow>
-      <VerificationWrapper>
-        <LogoPosition>
-          <Logo/>
-        </LogoPosition>
-        {props.apiData &&
-          <AgeCta>
-            <H1 dangerouslySetInnerHTML={{ __html: props.apiData.options.age_verification_cta }} />
-            <ButtonWrapper>
-              <AgeButton onClick={() => props.set_verification(false)}>
-                <span>yes</span>
-              </AgeButton>
-              <AgeButton>
-                <span>no</span>
-              </AgeButton>
-            </ButtonWrapper>
-          </AgeCta>
-        }
-      </VerificationWrapper>
-      <VerificationBg>
-        <FitImage src={`/assets/placeholder/age-gradient.svg`} contain={`cover`}/>
-      </VerificationBg>
-    </FullWindow>
-  )
+const cookies = new Cookies()
+let verified_cookie = cookies.get('age_verified')
+let show_ageGate = true
+
+if (verified_cookie) {
+  show_ageGate = false
+}
+
+class AgeVerification extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      visible: show_ageGate
+    };
+    this._ageGateResponse = this._ageGateResponse.bind(this)
+  }
+
+  _ageGateResponse(answer) {
+    if (answer == 'yes') {
+      cookies.set('age_verified', true, { path: '/' })
+      this.props.set_verification(true)
+      this.setState({
+        visible: false
+      })
+    }
+  }
+  
+  componentWillMount() {
+    if (!show_ageGate) {
+      this.props.set_verification(true)
+    }
+  }
+
+  render() {
+    return (
+      <Transition
+        from={{ opacity: 0, transform: `matrix3d(1.25, 0.02, 0.00, 0.0005, 0.02, 1.15, 0.00,0.0001, 0, 0, 1, 0, 0, 0, 10, 1)` }}
+        enter={{ opacity: 1, transform: `transform: matrix3d(1,0,0.00,0,0.00,1,0.00,0,0,0,1,0,0,0,0,1)` }}
+        leave={{ opacity: 0, transform: `matrix3d(1.45, 0.02, 0.00, 0.0005, 0.025, 1.45,0.00,0.0001,0,0,1,0,0,0,10,1)`, pointerEvents: 'none' }}
+      >
+        {this.state.visible && (styles =>
+          <Portal>
+            <Modal BgColor={colors.black} style={styles} height={this.props.wh}>
+              <FullWindow>
+                <VerificationWrapper>
+                  {(this.props.apiData && this.props.fonts) &&
+                    <AgeCta>
+                      <H1 dangerouslySetInnerHTML={{ __html: this.props.apiData.options.age_verification_cta }} />
+                      <ButtonWrapper>
+                        <AgeButton onClick={() => this._ageGateResponse('yes')}>
+                          <span>yes</span>
+                        </AgeButton>
+                        <AgeButton onClick={() => this._ageGateResponse('no')}>
+                          <span>no</span>
+                        </AgeButton>
+                      </ButtonWrapper>
+                    </AgeCta>
+                  }
+                  <FullBg>
+                    <FitImage src={`/assets/placeholder/age-gradient.svg`} contain={`cover`} />
+                  </FullBg>
+                </VerificationWrapper>
+              </FullWindow>
+            </Modal>
+          </Portal>
+        )}
+      </Transition>
+    )
+  }
 }
 
 export default connect(
   state => ({
     apiData: state.apiData,
+    fonts: state.fontsLoaded,
+    wh: state.resizeState.window_height,
   }),
   dispatch => ({
     set_verification: (bool) => dispatch(ageVerification(bool))
@@ -48,20 +94,8 @@ export default connect(
 )(AgeVerification)
 
 // STYLES
-const LogoPosition = styled.div`
-  display: block;
-  position: fixed;
-  z-index: 9000;
-  width: 8rem;
-  top: ${spacing.single_pad};
-  left: ${spacing.single_pad};
-  ${media.desktopNav`
-    width: 14rem;
-  `}
-`
-
 const VerificationWrapper = styled.section`
-  ${animationFadeIn(2500, 250)};
+  ${animationFadeIn(2500, 500)};
   ${flexCenteredAll};
   ${fixedTopLeft};
   z-index: 100;
@@ -69,11 +103,16 @@ const VerificationWrapper = styled.section`
   justify-content: center;
 `
 
-const VerificationBg = styled.aside`
-  ${animationFadeIn(1750, 350)};
-  ${fixedTopLeft};
+const FullBg = styled.aside`
+  ${animationFadeIn(1750, 0)};
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   mask: url('/assets/placeholder/age-gradient.svg');
   mask-size: cover;
+  z-index: 0;
   &:before {
     filter: url(#noise);
     content: '';
@@ -138,6 +177,7 @@ const AgeButton = styled.button`
 
 const AgeCta = styled.div`
   ${flexColumn};
+  z-index: 10;
   position: relative;
   h1 {
     margin-bottom: ${spacing.double_pad};

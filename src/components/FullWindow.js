@@ -25,7 +25,7 @@ const overflow = (props) => {
     `
   }
 }
-const FullWindowWrapper = styled.aside`
+const FullWindowWrapper = styled.section`
   height: ${props => props.height}px;
   z-index: ${props => props.zindex};
   position: ${props => props.position};
@@ -33,4 +33,5 @@ const FullWindowWrapper = styled.aside`
   left: 0;
   width: 100vw;
   ${overflow(false)};
+  flex-shrink: 0;
 `

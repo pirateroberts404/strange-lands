@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { spacing, colors, heights, shared } from './theme'
+import { spacing, colors, heights, shared, font_sizes } from './theme'
 import * as _ from './mixins'
 
 // TYPE
 const H1 = styled.h1`
-  ${_.bigType};
+  ${_.giantType};
 `
 
 const H2 = styled.h2`
@@ -13,7 +13,8 @@ const H2 = styled.h2`
 `
 
 const H3 = styled.h3`
-  ${_.mediumType};
+  ${_.bigType};
+  padding-bottom: ${spacing.double_pad};
 `
 
 const H4 = styled.h4`
@@ -21,11 +22,31 @@ const H4 = styled.h4`
 `
 
 const H5 = styled.h5`
-  ${_.bodyType};
+  ${_.bigType};
+  text-align: center;
+`
+
+const H6 = styled.h6`
+  ${_.smallType};
+  font-weight: bolder;
+  padding-bottom: ${spacing.micro_pad};
 `
 
 const P = styled.p`
   ${_.bodyType};
+`
+
+const SmallP = styled.p`
+  ${_.microType};
+`
+
+const SmallA = styled.a`
+  ${_.microType};
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: ${colors.magenta};
+  }
 `
 
 const Article = styled.article`
@@ -142,6 +163,15 @@ const Modal = styled.div`
   `}
 `
 
+const HeroWrapper = styled.section`
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  max-height: 70vw;
+  z-index: 10;
+`
+
 const ModalContent = styled.div`
   ${_.flexCenteredAll};
   flex-direction: column;
@@ -152,6 +182,44 @@ const ModalContent = styled.div`
   `}
 `
 
+const StyledMarkup = styled.div`
+  width: 100%;
+  max-width: 86rem;
+  &.pad-top {
+    padding-top: ${spacing.double_pad};
+  }
+  h1 {
+    ${_.mediumType};
+  }
+  h2 {
+    ${_.mediumType};
+  }
+  h3 {
+    ${_.bodyType};
+  }
+  h4 {
+    ${_.bodyType};
+  }
+  h5 {
+    ${_.bodyType};
+  }
+  h6 {
+    ${_.bodyType};
+  }
+  p {
+    ${_.bodyType};
+  }
+  a {
+    ${_.defaultLink};
+  }
+  li {
+    ${_.bodyType};
+  }
+  .small {
+    font-size: ${font_sizes.small};
+  }
+`
+
 export {
   H1,
   H2,
@@ -160,6 +228,8 @@ export {
   H5,
   H6,
   P,
+  SmallP,
+  SmallA,
   Article,
   SocialLink,
   StyledLink,
@@ -171,4 +241,6 @@ export {
   CloseButton,
   ProportionWrapper,
   MenuWrapper,
+  StyledMarkup,
+  HeroWrapper,
 }

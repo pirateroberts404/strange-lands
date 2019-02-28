@@ -4,20 +4,21 @@ import { Route, Switch } from 'react-router-dom'
 import Document from './Document'
 import NotFound from './views/NotFound'
 import Home from './views/Home'
-import Stockists from './views/Stockists'
+import Privacy from './views/Privacy'
+import Product from './views/Product'
 
 const Routes = props =>
   <Document>
-    <Switch>
-      {props.apiData && 
-        <React.Fragment>
-          <Route exact path={'/'} component={props => <Home {...props} />} />
-          <Route exact path={'/stockists'} component={props => <Stockists {...props} />} />
-        </React.Fragment>
-      }
+   {props.apiData && 
+   <Switch>
+      <Route exact path={'/'} component={props => <Home {...props} />} />
+      <Route exact path={'/privacy'} component={props => <Privacy {...props} />} />
+      <Route exact path={'/strain/:slug'} component={props => <Product {...props} />} />
       <Route component={NotFound} />
     </Switch>
+    }
   </Document>
+
 
 export default connect(
   state => ({

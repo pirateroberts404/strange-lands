@@ -93,37 +93,37 @@ const sansFont = css`
   font-family: ${fonts.sans};
   font-weight: bold;
   color: ${colors.white};
+  font-weight: lighter;
 `
 
-const bigType = css`
+const giantType = css`
   ${sansFont};
   font-size: ${font_sizes.giant_sm};
   line-height: 1;
   text-align: center;
-  font-weight: lighter;
   ${media.desktopNav`
     font-size: ${font_sizes.giant};
+  `}
+`
+
+const bigType = css`
+  ${sansFont};
+  font-size: ${font_sizes.big_sm};
+  line-height: 1;
+  text-align: left;
+  ${media.desktopNav`
+    font-size: ${font_sizes.big};
   `}
 `
 
 const mediumType = css`
   ${sansFont};
   font-size: ${font_sizes.medium};
-  line-height: .75;
-  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
   ${media.desktopNav`
     font-size: ${font_sizes.medium};
   `}
-  ${media.medium`
-    font-size: ${font_sizes.medium};
-  `}
-`
-
-const mediumTypeSmall = css`
-  ${sansFont};
-  font-size: ${font_sizes.medium_sm};
-  line-height: .95;
-  padding-bottom: ${spacing.double_pad};
 `
 
 const navType = css`
@@ -151,7 +151,8 @@ const bodyType = css`
 const smallType = css`
   ${sansFont};
   font-size: ${font_sizes.small_sm};
-  line-height: 1.25;
+  line-height: 1.45;
+  width: 100%;
   ${media.medium`
     font-size: ${font_sizes.small};
   `}
@@ -161,9 +162,16 @@ const microType = css`
   ${sansFont};
   font-size: ${font_sizes.micro_sm};
   line-height: 1.25;
+  letter-spacing: 1px;
   ${media.medium`
     font-size: ${font_sizes.micro};
   `}
+`
+
+const mouseType = css`
+  ${sansFont};
+  font-size: 1.25rem;
+  line-height: 1.25;
 `
 
 const linkInit = css`
@@ -208,6 +216,7 @@ const buttonInit = css`
   appearance: none;
   cursor: pointer;
   display: block;
+  ${microType};
 `
 
 const transitionAll = (time) => {
@@ -346,39 +355,6 @@ const absoluteTopFull = css`
   left: 0;
 `
 
-const positionClasses = css`
-  display: flex;
-  flex-direction: column;
-  &.centered {
-    align-items: center;
-    justify-content: center;
-  }
-  &.centered_right {
-    align-items: flex-end;
-    justify-content: center;
-  }
-  &.top_right {
-    align-items: flex-end;
-    justify-content: flex-start;
-  }
-  &.bottom_right {
-    align-items: flex-end;
-    justify-content: flex-end;
-  }
-  &.centered_left {
-    align-items: flex-start;
-    justify-content: center;
-  }
-  &.top_left {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  &.bottom_left {
-    align-items: flex-start;
-    justify-content: flex-end;
-  }
-`
-
 const fancyScroll = css`
   &::-webkit-scrollbar {
     width: 1rem;
@@ -409,6 +385,14 @@ const menuTransition = css`
   will-change: transform;
 `
 
+const hoverPurple = css`
+  transition: color 250ms ease;
+  will-change: color;
+  &:hover {
+    color: ${colors.purple};
+  }
+`
+
 export {
   sansFont,
   media,
@@ -418,6 +402,7 @@ export {
   mainPadding,
   scrollPanel,
   bigType,
+  giantType,
   mediumType,
   bodyType,
   smallType,
@@ -449,8 +434,9 @@ export {
   textShadow,
   fancyScroll,
   linkInit,
-  mediumTypeSmall,
   menuTransition,
   navType,
   gradient,
+  mouseType,
+  hoverPurple,
 }
