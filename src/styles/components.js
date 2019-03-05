@@ -163,7 +163,7 @@ const Modal = styled.div`
   `}
 `
 
-const HeroWrapper = styled.section`
+const HeroWrapper = styled.div`
   width: 100vw;
   overflow: hidden;
   position: relative;

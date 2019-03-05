@@ -20,6 +20,8 @@ export default connect(
 
 const StrainsList = styled.section`
   ${flexColumn};
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
   width: 100%;
   position: relative;
   z-index: 100;

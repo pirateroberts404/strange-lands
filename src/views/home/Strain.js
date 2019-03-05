@@ -46,7 +46,8 @@ export default Strain
 
 const StrainWrapper = styled.article`
 	width: 100%;
-	height: 65rem;
+	height: 55rem;
+	max-width: 114rem;
 	position: relative;
 	margin: auto;
 	&:nth-child(even) {

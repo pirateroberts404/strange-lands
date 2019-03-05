@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Head, optionsData } from './../components'
 import { H1, HeroWrapper } from './../styles/components'
 import { flexCenteredAll, animationFadeIn, textShadow } from './../styles/mixins'
-import HeroBg from './home/HeroBg'
+import HeroSection from './home/HeroSection'
 import Intro from './home/Intro'
 import Strains from './home/Strains'
 import Stockists from './home/Stockists'
@@ -11,16 +11,16 @@ import Stockists from './home/Stockists'
 export default optionsData(props =>
   <React.Fragment>
     <Head title={`Home`} description={props.intro_text}/>
-    <HeroWrapper position={`relative`}>
-      <Centered>
-        <Headline dangerouslySetInnerHTML={{ __html: props.hero_cta }} />
-      </Centered>
-      <HeroBg image={`/assets/placeholder/home-bg.svg`} />
-    </HeroWrapper>
-    <Intro introCopy={props.intro_text} />
+    <HeroSection image={`/assets/placeholder/home-bg.svg`}>
+      <HeroWrapper position={`relative`}>
+        <Centered>
+          <Headline dangerouslySetInnerHTML={{ __html: props.hero_cta }} />
+        </Centered>
+      </HeroWrapper>
+      <Intro introCopy={props.intro_text} />
+    </HeroSection>
     <Strains />
     <Stockists />
-    <HeroBg image={`/assets/placeholder/background-strains.svg`} />
   </React.Fragment>
 )
 
