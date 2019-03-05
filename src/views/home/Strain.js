@@ -5,6 +5,40 @@ import { H3 } from '../../styles/components'
 import { flexColumnCentered, bodyType, opacityTransition } from '../../styles/mixins'
 import { spacing } from '../../styles/theme'
 import { FitImage } from '../../components'
+import Warp from 'warpjs'
+
+class StrainSvg extends React.Component {
+	constructor(props) {
+		super(props);
+		this.warpRef = React.createRef()
+	}
+	
+	
+	componentWillMount() {
+		setTimeout(() => {
+			console.log(this.warpRef.current)
+		}, 1)
+	}
+	
+	render() {
+		return (
+			<SvgWrapper ref={this.warpRef} dangerouslySetInnerHTML={{ __html: this.props.svg }}/>
+		)
+	}
+}
+
+const SvgWrapper = styled.div`
+	width: 40rem;
+	height: 40rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	svg {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+`
 
 class Strain extends React.Component {
 	constructor (props) {
@@ -35,6 +69,7 @@ class Strain extends React.Component {
 						<div className={`image`}>
 							<FitImage src={this.props.data.strain_image} fit={`contain`} />
 						</div>
+						{this.props.data.blue_svg && <StrainSvg svg={this.props.data.blue_svg} />}
 					</div>
 				</div>
 			</StrainWrapper>

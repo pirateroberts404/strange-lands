@@ -41,6 +41,7 @@ function cpt_strains(){
         'strain_copy' => get_field('strain_description'),
         'hover_icon' => get_field('hover_image'),
         'strain_image' => get_the_post_thumbnail_url($post->ID),
+        'blue_svg' => get_field('blue_svg_code'),
         'product_types' => return_taxonomy_array_with_slug($post, 'category'),
       );
     endwhile;
