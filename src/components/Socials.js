@@ -3,19 +3,15 @@ import styled from 'styled-components'
 import { colors } from './../styles/theme'
 import { buttonInit, flexRow, flexRowCenteredVert, hoverPurple } from '../styles/mixins'
 
-export default props => {
-	console.log(props)
-	return (
-		<SocialLinks>
-			{props.social_links.map((item, i) =>
-				<a href={item.social_url} key={`social-${i}`}>
-					<Icon icon_url={item.icon}/>
-					<span>{item.cta}</span>
-				</a>
-			)}
-		</SocialLinks>
-	)
-}
+export default props =>
+	<SocialLinks>
+		{props.social_links.map((item, i) =>
+			<a href={item.social_url} key={`social-${i}`}>
+				<Icon icon_url={item.icon}/>
+				<span>{item.cta}</span>
+			</a>
+		)}
+	</SocialLinks>
 
 const SocialLinks = styled.menu`
 	${flexRow};

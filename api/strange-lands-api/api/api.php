@@ -25,6 +25,22 @@ function cpt_instagram(){
 }
 
 function cpt_strains(){
+  
+  function return_svgs(){
+    $data = array();
+    if ( have_rows( 'svg_blobs' ) ) :
+      while ( have_rows( 'svg_blobs' ) ) : the_row();
+        $data[] = array(
+          'label' => seoUrl(get_sub_field( 'label' )),
+          'svg_code' => get_sub_field( 'svg_code' ),
+          'position' => return_position(),
+          'animation' => return_animation_options(),
+        );
+      endwhile;
+    endif;
+    return $data;
+  }
+  
   $args = array(
     'post_type' => 'strain_post',
     'posts_per_page' => -1
@@ -42,6 +58,7 @@ function cpt_strains(){
         'hover_icon' => get_field('hover_image'),
         'strain_image' => get_the_post_thumbnail_url($post->ID),
         'product_types' => return_taxonomy_array_with_slug($post, 'category'),
+        'svgs' => return_svgs(),
       );
     endwhile;
   endif;

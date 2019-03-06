@@ -4,7 +4,6 @@ import { Head, optionsData, FullWindow } from './../components'
 import { media, smallType, flexColumn, textShadow } from './../styles/mixins'
 import { StyledMarkup } from './../styles/components'
 import { spacing } from './../styles/theme'
-import HeroBg from './home/HeroBg'
 
 export default optionsData(props =>
 	<React.Fragment>
@@ -12,9 +11,6 @@ export default optionsData(props =>
 		<PrivacySection>
 			<StyledMarkup dangerouslySetInnerHTML={{ __html: props.privacy_policy }} />
 		</PrivacySection>
-		<FullWindow zIndex={1}>
-			<HeroBg image={`/assets/placeholder/home-bg.svg`} />
-		</FullWindow>
 	</React.Fragment>
 )
 
