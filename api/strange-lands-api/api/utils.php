@@ -165,26 +165,61 @@
     }
   };
 
-  function return_thumb_meta($post) {
-    $thumb_id = get_post_thumbnail_id($post);
-    $thumb_post = get_post($thumb_id );
-    $alt = get_post_meta($thumb_id)['_wp_attachment_image_alt'][0];
-    return array (
-      'title' =>  $thumb_post->post_title,
-      'alt' => return_null_false($alt),
-      'caption' => return_null_false($thumb_post->post_excerpt),
-      'description' => return_null_false($thumb_post->post_content),
-    );
-  }
+function return_thumb_meta($post) {
+  $thumb_id = get_post_thumbnail_id($post);
+  $thumb_post = get_post($thumb_id );
+  $alt = get_post_meta($thumb_id)['_wp_attachment_image_alt'][0];
+  return array (
+    'title' =>  $thumb_post->post_title,
+    'alt' => return_null_false($alt),
+    'caption' => return_null_false($thumb_post->post_excerpt),
+    'description' => return_null_false($thumb_post->post_content),
+  );
+}
 
-  function seoUrl($string) {
-    //Lower case everything
-    $string = strtolower($string);
-    //Make alphanumeric (removes all other characters)
-    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
-    //Clean up multiple dashes or whitespaces
-    $string = preg_replace("/[\s-]+/", " ", $string);
-    //Convert whitespaces and underscore to dash
-    $string = preg_replace("/[\s_]/", "-", $string);
-    return $string;
-  }
+function seoUrl($string) {
+  //Lower case everything
+  $string = strtolower($string);
+  //Make alphanumeric (removes all other characters)
+  $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+  //Clean up multiple dashes or whitespaces
+  $string = preg_replace("/[\s-]+/", " ", $string);
+  //Convert whitespaces and underscore to dash
+  $string = preg_replace("/[\s_]/", "-", $string);
+  return $string;
+}
+
+// SVG ANIMATION
+
+function return_position() {
+  if ( have_rows( 'position' ) ) : 
+    $position = array();
+    while ( have_rows( 'position' ) ) : the_row(); 
+      $position = array(
+        'top' => get_sub_field( 'top' ),
+        'right' => get_sub_field( 'right' ),
+        'bottom' => get_sub_field( 'bottom' ),
+        'left' => get_sub_field( 'left' ),
+        'width' => get_sub_field( 'width' ),
+        'height' => get_sub_field( 'height' ),
+        'z_index' => get_sub_field( 'z_index' ),
+      );
+    endwhile; 
+  endif;
+  return $position; 
+}
+
+function return_animation_options() {
+  if ( have_rows( 'animation' ) ) : 
+    $opts = array();
+    while ( have_rows( 'animation' ) ) : the_row(); 
+      $opts = array(
+        'speed' => get_sub_field( 'speed' ),
+        'waves' => get_sub_field( 'waves' ),
+        'interpolation' => get_sub_field( 'interpolation' ),
+        'vert' => get_sub_field( 'vertical_warp' ),
+      );
+    endwhile; 
+  endif;
+  return $opts; 
+}

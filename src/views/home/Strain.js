@@ -4,66 +4,9 @@ import { Link } from 'react-router-dom'
 import { H3 } from '../../styles/components'
 import { flexColumnCentered, bodyType, opacityTransition } from '../../styles/mixins'
 import { spacing } from '../../styles/theme'
-import { FitImage } from '../../components'
-import Warp from 'warpjs'
-
-class StrainSvg extends React.Component {
-	constructor(props) {
-		super(props);
-		this.warpRef = React.createRef()
-	}
-
-	componentWillMount() {
-		setTimeout(() => {
-			const svg = this.warpRef.current.children[0]
-			const warp = new Warp(svg)
-			warp.interpolate(6)
-			warp.transform(([x, y]) => [x, y, y])
-			let offset = 0;
-			const animate = () => {
-				warp.transform(([x, y, oy]) => [x, oy + 4 * Math.sin(x / 16 + offset), oy])
-				offset += 0.05
-				requestAnimationFrame(animate)
-			}
-			animate()
-		}, 1)
-	}
-	
-	render() {
-		return (
-			<SvgWrapper ref={this.warpRef} dangerouslySetInnerHTML={{ __html: this.props.svg }}/>
-		)
-	}
-}
-
-const SvgWrapper = styled.div`
-	width: 40rem;
-	height: 40rem;
-	position: absolute;
-	top: 0;
-	right: 0;
-	svg {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
-`
+import { FitImage, WarpedSvg } from '../../components'
 
 class Strain extends React.Component {
-	constructor (props) {
-		super(props)
-		this._handleEnter = this._handleEnter.bind(this)
-		this._handleLeave = this._handleLeave.bind(this)
-	}
-	
-	_handleEnter() {
-		console.log('enter')
-	}
-
-	_handleLeave() {
-		console.log('enter')
-	}
-
 	render() {
 		return (
 			<StrainWrapper hover_icon={this.props.data.hover_icon}>
@@ -80,7 +23,9 @@ class Strain extends React.Component {
 						</div>
 					</div>
 				</div>
-				{this.props.data.blue_svg && <StrainSvg svg={this.props.data.blue_svg} />}
+				{this.props.data.svgs && this.props.data.svgs.map((item, i) =>
+					<WarpedSvg svg={item} key={`svg-${item.label}-${i}`} />
+				)}
 			</StrainWrapper>
 		)
 	}
@@ -90,7 +35,7 @@ export default Strain
 
 const StrainWrapper = styled.article`
 	width: 100%;
-	height: 55rem;
+	height: 65rem;
 	position: relative;
 	margin: auto;
 	&:nth-child(even) {
@@ -108,6 +53,7 @@ const StrainWrapper = styled.article`
 		padding: ${spacing.double_pad} 0;
 		position: relative;
 		margin: 0 auto;
+		z-index: 50;
 	}
 	.description {
 		width: 100%;

@@ -11,6 +11,7 @@ import pageData from './pageData'
 import FullWindow from './FullWindow'
 import Footer from './Footer'
 import LocationMap from './LocationMap/index'
+import WarpedSvg from './WarpedSvg'
 
 export {
   FitImage,
@@ -26,4 +27,5 @@ export {
   FullWindow,
   Footer,
   LocationMap,
+  WarpedSvg,
 }

@@ -86,6 +86,13 @@ if(function_exists('acf_add_options_page')) {
     'menu_slug' 	=> 'legal',
 		'parent_slug'	=> 'site-content',
 	));
+
+  acf_add_options_sub_page(array(
+		'page_title' 	=> 'Home Hero Layout',
+		'menu_title'	=> 'Home Hero Layout',
+    'menu_slug' 	=> 'home-hero',
+		'parent_slug'	=> 'site-content',
+	));
 }
 
 function get_current_template() {
