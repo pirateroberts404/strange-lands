@@ -12,11 +12,20 @@ class StrainSvg extends React.Component {
 		super(props);
 		this.warpRef = React.createRef()
 	}
-	
-	
+
 	componentWillMount() {
 		setTimeout(() => {
-			console.log(this.warpRef.current)
+			const svg = this.warpRef.current.children[0]
+			const warp = new Warp(svg)
+			warp.interpolate(6)
+			warp.transform(([x, y]) => [x, y, y])
+			let offset = 0;
+			const animate = () => {
+				warp.transform(([x, y, oy]) => [x, oy + 4 * Math.sin(x / 16 + offset), oy])
+				offset += 0.05
+				requestAnimationFrame(animate)
+			}
+			animate()
 		}, 1)
 	}
 	
@@ -32,7 +41,7 @@ const SvgWrapper = styled.div`
 	height: 40rem;
 	position: absolute;
 	top: 0;
-	left: 0;
+	right: 0;
 	svg {
 		width: 100%;
 		height: 100%;
@@ -69,9 +78,9 @@ class Strain extends React.Component {
 						<div className={`image`}>
 							<FitImage src={this.props.data.strain_image} fit={`contain`} />
 						</div>
-						{this.props.data.blue_svg && <StrainSvg svg={this.props.data.blue_svg} />}
 					</div>
 				</div>
+				{this.props.data.blue_svg && <StrainSvg svg={this.props.data.blue_svg} />}
 			</StrainWrapper>
 		)
 	}
@@ -82,7 +91,6 @@ export default Strain
 const StrainWrapper = styled.article`
 	width: 100%;
 	height: 55rem;
-	max-width: 114rem;
 	position: relative;
 	margin: auto;
 	&:nth-child(even) {
@@ -94,6 +102,7 @@ const StrainWrapper = styled.article`
 	.strain-inner {
 		width: 100%;
 		height: 100%;
+		max-width: 114rem;
 		display: flex;
 		align-items: center;
 		padding: ${spacing.double_pad} 0;
