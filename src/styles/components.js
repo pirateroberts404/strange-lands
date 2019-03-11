@@ -14,7 +14,10 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
   ${_.bigType};
-  padding-bottom: ${spacing.double_pad};
+  padding-bottom: ${spacing.single_pad};
+  ${_.media.desktopNav`
+    padding-bottom: ${spacing.double_pad};
+  `}
 `
 
 const H4 = styled.h4`
@@ -165,11 +168,15 @@ const Modal = styled.div`
 
 const HeroWrapper = styled.div`
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   position: relative;
   height: 100vh;
-  max-height: 70vw;
+  max-height: 90vh;
   z-index: 10;
+  ${_.media.desktopNav`
+    max-height: 70vw;
+  `}
 `
 
 const ModalContent = styled.div`

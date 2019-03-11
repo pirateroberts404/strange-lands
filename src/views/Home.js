@@ -43,7 +43,7 @@ const Bg = styled.aside`
 	top: 0;
 	left: 0;
 	z-index: 1;
-	overflow-y: visible;
+	overflow: hidden;
 `
 
 const Centered = styled.div`
@@ -55,6 +55,7 @@ const Centered = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
 `
 
 const Headline = styled(H1)`

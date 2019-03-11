@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { H3 } from '../../styles/components'
-import { flexColumnCentered, bodyType, opacityTransition } from '../../styles/mixins'
+import { flexColumnCentered, bodyType, opacityTransition, media } from '../../styles/mixins'
 import { spacing } from '../../styles/theme'
 import { FitImage, WarpedSvg } from '../../components'
 
 class Strain extends React.Component {
 	render() {
 		return (
-			<StrainWrapper hover_icon={this.props.data.hover_icon}>
+			<StrainWrapper>
 				<div className={`strain-inner`}>
 					<Link to={`/strain/${this.props.data.slug}`} className={`strain-copy`}>
 						<div className={`copy-block`}>
@@ -35,9 +35,13 @@ export default Strain
 
 const StrainWrapper = styled.article`
 	width: 100%;
-	height: 65rem;
+	height: 40rem;
 	position: relative;
-	margin: auto;
+  margin: 0 auto;
+  padding: 0 ${spacing.single_pad};
+  ${media.desktopNav`
+    height: 65rem;
+  `}
 	&:nth-child(even) {
 		.strain-inner { flex-direction: row-reverse; }
 	}
@@ -57,16 +61,28 @@ const StrainWrapper = styled.article`
 	}
 	.description {
 		width: 100%;
-		max-width: 44rem;
+    max-width: 44rem;
 		* {
 			${bodyType};
 		}
 	}
-	.strain-image,
+  .strain-image {
+    width: 35%;
+    position: relative;
+    padding: ${spacing.single_pad};
+    ${media.desktopNav`
+      width: 50%;
+    `}
+  }
 	.strain-copy {
-		width: 50%;
-		position: relative;
+		width: 65%;
+    position: relative;
+    padding: ${spacing.single_pad};
+    ${media.desktopNav`
+      width: 50%;
+    `}
 	}
+  
 	.strain-copy {
 		${flexColumnCentered};
 		position: relative;
@@ -78,7 +94,8 @@ const StrainWrapper = styled.article`
 		}
 		h3 > span {
 			position: relative;
-			&:after {
+      /*
+      &:after {
 				${opacityTransition};
 				content: '';
 				opacity: 0;
@@ -91,7 +108,8 @@ const StrainWrapper = styled.article`
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: contain;
-			}
+      }
+      */
 		}
 	}
 	.strain-image {
