@@ -118,7 +118,7 @@ const bigType = css`
 
 const mediumType = css`
   ${sansFont};
-  font-size: ${font_sizes.medium};
+  font-size: ${font_sizes.medium_sm};
   line-height: 1;
   text-align: center;
   ${media.desktopNav`
