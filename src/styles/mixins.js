@@ -393,6 +393,32 @@ const hoverPurple = css`
   }
 `
 
+const typeGradient = css`
+  color: ${colors.purple};
+  background: -moz-linear-gradient(left, #3023ae 0%, #e52adf 51%, #f59223 100%);
+  background: -webkit-linear-gradient(left, #3023ae 0%,#e52adf 51%,#f59223 100%);
+  background: linear-gradient(to right, #3023ae 0%,#e52adf 51%,#f59223 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`
+
+const lineHeight = css`
+  height: 14rem;
+  margin: ${spacing.big_pad} auto;
+  &:before,
+  &:after {
+    content: '';
+    opacity: 1;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #ffffff;
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
+`
+
 export {
   sansFont,
   media,
@@ -437,6 +463,8 @@ export {
   menuTransition,
   navType,
   gradient,
+  typeGradient,
   mouseType,
+  lineHeight,
   hoverPurple,
 }
