@@ -6,6 +6,7 @@ import { flexCenteredAll, animationFadeIn, textShadow } from './../styles/mixins
 import Intro from './home/Intro'
 import Strains from './home/Strains'
 import Stockists from './home/Stockists'
+import InstaModule from './home/InstaModule'
 
 export default optionsData(props =>
   <React.Fragment>
@@ -25,6 +26,7 @@ export default optionsData(props =>
     </HeroSection>
     <Strains />
     <Stockists />
+    <InstaModule />
   </React.Fragment>
 )
 
