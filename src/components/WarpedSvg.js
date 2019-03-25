@@ -11,13 +11,10 @@ export default class extends React.Component {
 
 	componentWillMount() {
 		setTimeout(() => {
-			const speed = parseInt(this.props.svg.animation.speed) || 0.05
-			const waves = parseInt(this.props.svg.animation.waves) || 16
-			const interpolation = parseInt(this.props.svg.animation.interpolation) || 4
-			const vert = parseInt(this.props.svg.animation.vert) || 10
-
-			console.log(speed, waves, interpolation, vert)
-
+			const speed = parseFloat(this.props.svg.animation.speed) || 0.05
+			const waves = parseFloat(this.props.svg.animation.waves) || 16
+			const interpolation = parseFloat(this.props.svg.animation.interpolation) || 4
+			const vert = parseFloat(this.props.svg.animation.vertical_warp) || 10
 			const svg = this.warpRef.current.children[0]
 			const warp = new Warp(svg)
 			warp.interpolate(interpolation)
@@ -44,6 +41,7 @@ export default class extends React.Component {
 				width={this.props.svg.position.width}
 				height={this.props.svg.position.height}
 				z_index={parseInt(this.props.svg.position.z_index)}
+				fit={this.props.fit || 'contain'}
 			/>
 		)
 	}
@@ -63,7 +61,7 @@ const SvgWrapper = styled.div`
 		${absoluteCentered};
 		width: 100%;
 		height: 100%;
-		object-fit: contain;
+		object-fit: ${props => props.fit};
 		overflow: visible;
 	}
 `
