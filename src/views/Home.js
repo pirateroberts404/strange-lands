@@ -7,6 +7,7 @@ import { flexCenteredAll, animationFadeIn, textShadow } from './../styles/mixins
 import Intro from './home/Intro'
 import Strains from './home/Strains'
 import Stockists from './home/Stockists'
+import InstaModule from './home/InstaModule'
 
 const Home = props =>
   <React.Fragment>
@@ -14,7 +15,6 @@ const Home = props =>
       <React.Fragment>
         <Head title={`Home`} description={props.apiData.options.intro_text} />
         <HeroSection>
-          <HeroWrapper position={`relative`}>
             <Centered>
               <Headline dangerouslySetInnerHTML={{ __html: props.apiData.options.hero_cta }} />
             </Centered>
@@ -25,13 +25,14 @@ const Home = props =>
                 )}
               </Bg>
             }
-          </HeroWrapper>
-          <Intro introCopy={props.apiData.options.intro_text} />
+            <Intro introCopy={props.apiData.options.intro_text} />
+          
         </HeroSection>
         {props.age &&
           <React.Fragment>
             <Strains />
             <Stockists />
+            <InstaModule />
           </React.Fragment>
         }
       </React.Fragment>
@@ -47,7 +48,6 @@ export default connect(
 )(Home)
 
 const HeroSection = styled.section`
-  ${animationFadeIn(2000, 500)};
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -67,13 +67,10 @@ const Bg = styled.aside`
 const Centered = styled.div`
   ${animationFadeIn(2000, 1000)};
   ${flexCenteredAll};
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 100;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: visible;
+  position: relative;
 `
 
 const Headline = styled(H1)`
