@@ -73,7 +73,6 @@ const GlobalStyles = createGlobalStyle`
   ::-webkit-input-placeholder,
   ::-moz-placeholder {
     color: white;
-    font-size: 15vmin;
   }
   *::-webkit-scrollbar {
     width: 2px;
