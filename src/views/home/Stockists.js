@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { H4, P } from '../../styles/components'
-import { flexColumn, animationFadeIn, sansFont, hoverPurple } from '../../styles/mixins'
+import { flexColumn, lineHeight, sansFont, hoverPurple, media } from '../../styles/mixins'
 import { shared, spacing, colors } from '../../styles/theme'
 import { LocationMap } from '../../components'
 
@@ -47,7 +47,7 @@ const LocationWrapper = styled.div`
 const LocationBottom = styled.div`
 	text-align: center;
 	width: 100%;
-	padding-top: ${spacing.big_pad};
+	padding: ${spacing.big_pad} 0 0;
 	p {
 		${sansFont};
 		font-size: 2.25rem;
@@ -65,22 +65,9 @@ const LocationBottom = styled.div`
 const HeadlineWrapper = styled.div`
 	width: 100%;
 	margin: 0 auto;
+	padding: 0 ${spacing.single_pad};
 `
 
 const Stroke = styled.div`
-	height: 15vh;
-	margin: 4rem auto;
-	width: 100%;
-	position: relative;
-	&:before {
-		${animationFadeIn(2000, 1500)};
-    content: '';
-    width: 1px;
-    height: 100%;
-    background-color: #ffffff;
-    position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-	}
+	${lineHeight};
 `

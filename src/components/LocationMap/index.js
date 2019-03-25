@@ -1,7 +1,7 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import styled from 'styled-components'
-import { flexRow, flexColumn, absoluteCentered } from './../../styles/mixins'
+import { flexRow, flexColumn, absoluteCentered, media } from './../../styles/mixins'
 import { H6, SmallP, SmallA } from './../../styles/components'
 import { colors, spacing } from '../../styles/theme'
 import styles from './styles'
@@ -70,27 +70,47 @@ export default class extends React.Component {
 }
 
 const LocationsWrapper = styled.div`
-  ${flexRow};
-  height: 70rem;
-  width: 100rem;
+  ${flexColumn};
+  width: 100vw;
+  padding: 0 ${spacing.single_pad};
+  ${media.desktopNav`
+    ${flexRow};
+    height: 70rem;
+    width: 100rem;
+    flex-shrink: 0;
+  `}
   * {
     color: ${colors.white};
   }
 `
 
 const MapWrapper = styled.div`
-  width: 70rem;
-  height: 70rem;
+  width: 100%;
+  height: 100vw;
   border: 1px solid ${colors.map_blue};
   overflow: hidden;
+  margin-bottom: ${spacing.double_pad};
+  ${media.desktopNav`
+    ${flexRow};
+    height: 70rem;
+    width: 100rem;
+    margin-bottom: 0;
+  `}
 `
 
 const LocationListWrapper = styled.div`
-  width: 29rem;
-  height: 70rem;
+  width: 100%;
+  height: 100vw;
   margin-right: 1rem;
+  margin-bottom: ${spacing.big_pad};
   border: 1px solid ${colors.map_blue};
   overflow-y: scroll;
+  ${media.desktopNav`
+    width: 29rem;
+    height: 70rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  `}
   ul {
     padding: ${spacing.single_pad};
   }

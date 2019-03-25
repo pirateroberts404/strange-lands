@@ -403,8 +403,13 @@ const typeGradient = css`
 `
 
 const lineHeight = css`
-  height: 14rem;
+  height: 6rem;
   margin: ${spacing.big_pad} auto;
+	width: 100%;
+	position: relative;
+	${media.desktopNav`
+    height: 14rem;
+  `}
   &:before,
   &:after {
     content: '';
